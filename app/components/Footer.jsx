@@ -166,7 +166,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col md:flex-row gap-10 justify-between items-center py-9 border-t border-brand mt-11">
           <p className="max-w-72">
-            © 2024, Nest - Next JS Ecommerce Template All rights reserved
+            © 2024, FreshMart - E-Commerce Platform by abid azam khan. All rights reserved
           </p>
           <div className="flex gap-8">
             <Link href="tel: 1900 - 666" className="ml-auto flex items-center gap-2">

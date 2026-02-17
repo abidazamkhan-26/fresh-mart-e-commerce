@@ -1,7 +1,8 @@
 {
-  "name": "nest-ecommerce",
+  "name": "freshmart",
   "version": "0.1.0",
   "private": true,
+  "author": "abid azam khan",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",

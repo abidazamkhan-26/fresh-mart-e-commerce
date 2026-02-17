@@ -1,4 +1,10 @@
+# FreshMart - E-Commerce Platform
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Contributors
+
+- **abid azam khan** - Project Developer
 
 ## Getting Started
 
