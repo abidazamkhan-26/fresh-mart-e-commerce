@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaBox, FaSearch, FaShoppingCart } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import { IoCall, IoCloseCircleSharp } from "react-icons/io5";
@@ -7,17 +7,90 @@ import { FaBarsStaggered } from "react-icons/fa6";
 import Link from "next/link";
 import Image from "next/image";
 
-const Navbar = async ({userData}) => {
+const Navbar = ({userData}) => {
   const [show, setShow] = useState(false);
   const [sidebar, setSidebar] = useState(false);
+  const [cartData, setCartData] = useState({ totalProducts: 0 });
 
-  const res = await fetch("https://dummyjson.com/carts/5", {
-    method: "GET",
-    cache: "no-store",
-  });
-  const data = await res.json();
+  useEffect(() => {
+    const CART_CACHE_KEY = "cart_data_cache";
+    const CART_CACHE_TIMESTAMP_KEY = "cart_data_cache_timestamp";
+    const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
 
-  console.log(data);
+    // Load cached data first
+    const loadCachedData = () => {
+      try {
+        const cachedData = localStorage.getItem(CART_CACHE_KEY);
+        const cacheTimestamp = localStorage.getItem(CART_CACHE_TIMESTAMP_KEY);
+        
+        if (cachedData && cacheTimestamp) {
+          const timestamp = parseInt(cacheTimestamp);
+          const now = Date.now();
+          
+          // Use cached data if it's still fresh (within cache duration)
+          if (now - timestamp < CACHE_DURATION) {
+            const parsedData = JSON.parse(cachedData);
+            setCartData(parsedData);
+            return true; // Cache is valid
+          }
+        }
+      } catch (error) {
+        console.error("Error loading cached cart data:", error);
+      }
+      return false; // No valid cache
+    };
+
+    // Save data to cache
+    const saveToCache = (data) => {
+      try {
+        localStorage.setItem(CART_CACHE_KEY, JSON.stringify(data));
+        localStorage.setItem(CART_CACHE_TIMESTAMP_KEY, Date.now().toString());
+      } catch (error) {
+        console.error("Error saving cart data to cache:", error);
+      }
+    };
+
+    // Load cached data immediately for better UX
+    const hasValidCache = loadCachedData();
+
+    const fetchCartData = async () => {
+      try {
+        const res = await fetch("https://dummyjson.com/carts/5", {
+          method: "GET",
+          cache: "no-store",
+        });
+        
+        // Check if response is successful
+        if (res.ok) {
+          const data = await res.json();
+          setCartData(data);
+          saveToCache(data); // Update cache on successful fetch
+        } else {
+          // If API call fails (e.g., 429 Too Many Requests), use cached data
+          if (!hasValidCache) {
+            console.warn("API call failed and no cache available. Status:", res.status);
+          } else {
+            console.warn("API call failed, using cached data. Status:", res.status);
+          }
+        }
+      } catch (error) {
+        // Network error or other exception
+        if (!hasValidCache) {
+          console.error("Error fetching cart data:", error);
+        } else {
+          console.warn("Error fetching cart data, using cached data:", error);
+        }
+      }
+    };
+    
+    // Only fetch if cache is stale or doesn't exist
+    if (!hasValidCache) {
+      fetchCartData();
+    } else {
+      // Fetch in background to update cache, but don't wait for it
+      fetchCartData();
+    }
+  }, []); // Empty dependency array - only fetch once on mount
   
 
   return (
@@ -59,7 +132,7 @@ const Navbar = async ({userData}) => {
                   className="flex gap-2 items-end relative text-secondary"
                 >
                   <span className="w-4 h-4 lg:w-6 lg:h-6 rounded-full bg-brand text-white text-xs md:text-sm flex items-center justify-center absolute -top-3 md:-top-2 -right-2 md:right-5">
-                   {data.totalProducts}
+                   {cartData.totalProducts}
                   </span>
                   <FaShoppingCart className="text-2xl lg:text-3xl text-primary" />{" "}
                   <span className="hidden md:block">Cart</span>

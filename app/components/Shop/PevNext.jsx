@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { useState, useEffect } from "react";
 
 const PevNext = () => {
     const [skip, setSkip] = useState(0);
@@ -7,9 +8,13 @@ const PevNext = () => {
 
        useEffect(() => {
           const fetchData = async () => {
-            const res = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
-            const json = await res.json();
-            setData(json);
+            try {
+              const res = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
+              const json = await res.json();
+              setData(json);
+            } catch (error) {
+              console.error("Error fetching products:", error);
+            }
           };
           fetchData();
         }, [skip, limit]);
