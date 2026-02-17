@@ -51,8 +51,8 @@ const BestSell = async () => {
   });
   const data = await response.json();
   return (
-    <section className="pb-12">
-      <div className="container">
+    <section className="pb-8 sm:pb-10 md:pb-12">
+      <div className="container px-4 sm:px-6">
         <div className="flex justify-between flex-col md:flex-row gap-7 items-center md:items-end">
           <h2 className="sectn_heading">Daily Best Sells</h2>
           <ul className="flex flex-wrap text-base font-light text-primary gap-2 md:gap-7">

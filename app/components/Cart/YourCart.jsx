@@ -12,54 +12,54 @@ const YourCart = async () => {
   // console.log(data);
 
   return (
-    <section className="pt-8 pb-12">
+    <section className="pt-6 sm:pt-8 pb-8 sm:pb-12 px-4 sm:px-6">
       <div className="container">
-        <div className="flex gap-5 ">
-          <div className="w-2/3">
-            <h2 className="text-4xl font-bold">Your Cart</h2>
-            <div className="flex items-center justify-between text-xl">
+        <div className="flex flex-col lg:flex-row gap-5 lg:gap-8">
+          <div className="w-full lg:w-2/3">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Your Cart</h2>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 text-base sm:text-lg md:text-xl mt-3 sm:mt-4">
               <h5>
                 There are{" "}
                 <span className="text-green-400">{data?.totalProducts}</span>{" "}
                 products in your cart
               </h5>
-              <button className="flex items-center gap-2 text-xl text-gray-600">
+              <button className="flex items-center gap-2 text-base sm:text-lg md:text-xl text-gray-600">
                 <RiDeleteBin5Line /> Clear Cart
               </button>
             </div>
             <div className="mt-5">
               <div className="bg-white shadow rounded-lg pb-5">
-                <ul className="flex items-center bg-gray-200 px-4">
-                  <li className="min-w-5 px-3 py-2 text-left text-xs sm:text-sm font-medium whitespace-nowrap">
+                <ul className="hidden sm:flex items-center bg-gray-200 px-2 sm:px-4">
+                  <li className="min-w-5 px-2 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium whitespace-nowrap">
                     <input type="checkbox" />
                   </li>
-                  <li className="min-w-120 px-3 py-2 text-left text-xs sm:text-sm font-medium whitespace-nowrap">
+                  <li className="min-w-120 px-2 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium whitespace-nowrap">
                     Product
                   </li>
-                  <li className="min-w-30 sm px-3 py-2 text-center text-xs sm:text-sm font-medium whitespace-nowrap">
+                  <li className="min-w-30 sm px-2 sm:px-3 py-2 text-center text-xs sm:text-sm font-medium whitespace-nowrap">
                     Unit Price
                   </li>
-                  <li className="min-w-30 px-3 py-2 text-center text-xs sm:text-sm font-medium whitespace-nowrap">
+                  <li className="min-w-30 px-2 sm:px-3 py-2 text-center text-xs sm:text-sm font-medium whitespace-nowrap">
                     Quantity
                   </li>
-                  <li className="min-w-30 px-3 py-2 text-center text-xs sm:text-sm font-medium whitespace-nowrap">
+                  <li className="min-w-30 px-2 sm:px-3 py-2 text-center text-xs sm:text-sm font-medium whitespace-nowrap">
                     Subtotal
                   </li>
-                  <li className="min-w-30 px-3 py-2 text-center text-xs sm:text-sm font-medium whitespace-nowrap">
+                  <li className="min-w-30 px-2 sm:px-3 py-2 text-center text-xs sm:text-sm font-medium whitespace-nowrap">
                     Remove
                   </li>
                 </ul>
                 {data.products?.map((item) => (
                   <ShoppingCart key={item.id} data={item} />
                 ))}
-                <div className="flex items-center justify-end gap-20 mr-60">
-                  <label className="min-w-[120px] text-base sm:text-end font-semibold text-gray-700">
+                <div className="flex flex-col sm:flex-row items-start sm:items-end justify-end gap-3 sm:gap-10 md:gap-20 sm:mr-0 md:mr-60 px-4 sm:px-0">
+                  <label className="text-sm sm:text-base text-start sm:text-end font-semibold text-gray-700">
                     Total Products:{" "}
                     <span className="text-green-500">
                       {data?.totalProducts}
                     </span>
                   </label>
-                  <label className="min-w-[120px] text-base sm:text-end font-semibold text-gray-700">
+                  <label className="text-sm sm:text-base text-start sm:text-end font-semibold text-gray-700">
                     Total Quantity:{" "}
                     <span className="text-green-500">
                       {data?.totalQuantity}
@@ -69,7 +69,7 @@ const YourCart = async () => {
               </div>
             </div>
           </div>
-          <div className="w-1/3 mt-25">
+          <div className="w-full lg:w-1/3 mt-6 lg:mt-25">
             <form>
               <div className="grid gap-2  shadow-lg rounded-2xl py-5">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 lg:gap-2 mx-5 px-5 py-4 border rounded-xl border-gray-400 transform-fill">
@@ -120,10 +120,9 @@ const YourCart = async () => {
                     <option value="Cash on Delivary">Cash on Delivary</option>
                   </select>
                 </div>
-                <div className="px-10 rounded-2xl">
+                <div className="px-4 sm:px-6 md:px-10 rounded-2xl">
                   <button
-                    className="w-full bg-green-500 py-2 text-2xl text-white hover:text-green-3
-                  00 hover:bg-blue-500 transition duration-300 ease-in-out rounded-lg"
+                    className="w-full bg-green-500 py-2 sm:py-3 text-base sm:text-lg md:text-xl lg:text-2xl text-white hover:text-green-300 hover:bg-blue-500 transition duration-300 ease-in-out rounded-lg"
                   >
                     Proceed To CheckOut
                   </button>

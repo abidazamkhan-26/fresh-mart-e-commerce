@@ -23,8 +23,8 @@ const Banner = () => {
     ),
   };
   return (
-    <section className="mt-7">
-      <div className="container px-0">
+    <section className="mt-4 sm:mt-6 md:mt-7">
+      <div className="container px-4 sm:px-6">
         <Slider {...settings}>
           <BannerItems />
           <BannerItems/>

@@ -2,8 +2,8 @@ import React from "react";
 import PoductBannerItem from "./PoductBannerItem";
 const ProductBanner = () => {
   return (
-    <section className="pb-12">
-      <div className="container flex flex-col sm:flex-row gap-6">
+    <section className="pb-8 sm:pb-12 px-4 sm:px-6">
+      <div className="container flex flex-col sm:flex-row gap-4 sm:gap-6">
         <PoductBannerItem bg="/product-banner.png">
           Everyday Fresh & Clean with Our Products
         </PoductBannerItem>

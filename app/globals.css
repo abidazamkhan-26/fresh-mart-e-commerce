@@ -1,7 +1,19 @@
 @import "tailwindcss";
 @utility container {
   margin: auto;
-  /* padding-inline: 2rem; */
+  padding-inline: 1rem;
+  @media (min-width: 640px) {
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    padding-inline: 3rem;
+  }
+  @media (min-width: 1280px) {
+    padding-inline: 4rem;
+  }
+  @media (min-width: 1536px) {
+    padding-inline: 5rem;
+  }
 }
 @theme {
   --color-brand: #3bb77e;
@@ -14,4 +26,11 @@
 }
 .sectn_heading {
   @apply font-bold text-xl md:text-3xl text-primary;
+}
+
+/* Responsive improvements */
+@media (max-width: 640px) {
+  .container {
+    padding-inline: 1rem;
+  }
 }

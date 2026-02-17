@@ -11,17 +11,39 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   const data = await cookies();
   const cookie = data.get("token")?.value;
-  const response = await fetch(
-    "https://fdr-food-api.onrender.com/api/profile",
-    {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${cookie}`,
-      },
+  
+  let userData = null;
+  
+  // Only fetch user data if token exists
+  if (cookie) {
+    try {
+      const response = await fetch(
+        "https://fdr-food-api.onrender.com/api/profile",
+        {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${cookie}`,
+          },
+          // Add timeout and error handling
+          next: { revalidate: 0 },
+        }
+      );
+      
+      if (response.ok) {
+        const res = await response.json();
+        // Validate response structure
+        if (res && res.user) {
+          userData = res.user;
+        }
+      }
+      // Silently fail if token is invalid - don't expose error to client
+    } catch (error) {
+      // Log error server-side only, don't expose to client
+      if (process.env.NODE_ENV === 'development') {
+        console.error("Profile fetch error:", error);
+      }
     }
-  );
-  const res = await response.json();
-  const userData = res.user;
+  }
 
   return (
     <html lang="en">

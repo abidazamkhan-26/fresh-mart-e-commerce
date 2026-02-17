@@ -8,12 +8,12 @@ const ProductDetails = ({ data }) => {
   return (
     <>
       <div>
-        <ul className="flex gap-8 justify-start mt-2">
+        <ul className="flex flex-wrap gap-2 sm:gap-4 md:gap-8 justify-start mt-2">
           {["Description", "Additional Info", "Vendor", "Reviews"].map(
             (tab) => (
               <li
                 key={tab}
-                className={`text-lg font-bold px-8 py-2 rounded-full border-1 border-gray-500 cursor-pointer ${
+                className={`text-xs sm:text-sm md:text-base lg:text-lg font-bold px-3 sm:px-4 md:px-6 lg:px-8 py-1.5 sm:py-2 rounded-full border-1 border-gray-500 cursor-pointer ${
                   activeTab === tab ? "bg-gray-200 text-brand" : "text-gray-600"
                 }`}
                 onClick={() => setActiveTab(tab)}

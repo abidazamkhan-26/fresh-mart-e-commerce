@@ -96,22 +96,22 @@ const Navbar = ({userData}) => {
   return (
     <header className="relative shadow-sm m-auto">
       {/* Header Part */}
-      <div className="container">
-        <div className="flex justify-between items-center py-8 gap-8">
+      <div className="container px-4 sm:px-6">
+        <div className="flex justify-between items-center py-4 sm:py-6 md:py-8 gap-4 sm:gap-6 md:gap-8">
           <button
             onClick={() => setSidebar(true)}
-            className="md:hidden text-2xl text-primary cursor-pointer"
+            className="md:hidden text-2xl text-primary cursor-pointer flex-shrink-0"
           >
             <FaBarsStaggered />
           </button>
-          <Link href="/" className="w-32 inline-block lg:w-auto">
-            <Image src="/logo.png" width={128} height={50} alt="logo" className="w-32" />
+          <Link href="/" className="w-24 sm:w-32 inline-block lg:w-auto flex-shrink-0">
+            <Image src="/logo.png" width={128} height={50} alt="logo" className="w-24 sm:w-32" />
           </Link>
-          <div className="border-2 border-brand p-2 lg:p-5 rounded w-full max-w-64  lg:max-w-[700px] hidden md:flex items-center">
+          <div className="border-2 border-brand p-2 lg:p-5 rounded w-full max-w-64 lg:max-w-[700px] hidden md:flex items-center">
             <select
               name=""
               id=""
-              className="pr-3.5 border-r-2 border-slate-200 text-primary hidden lg:block"
+              className="pr-3.5 border-r-2 border-slate-200 text-primary hidden lg:block text-sm"
             >
               <option value="">All Categories</option>
               <option value="">All Categories</option>
@@ -120,37 +120,37 @@ const Navbar = ({userData}) => {
             <input
               type="text"
               placeholder="Search for items..."
-              className="px-3.5 w-full lg:w-2/3 outline-0"
+              className="px-3.5 w-full lg:w-2/3 outline-0 text-sm"
             />
-            <FaSearch className="ml-auto" />
+            <FaSearch className="ml-auto text-lg" />
           </div>
-          <div>
-            <ul className="flex items-center gap-4 lg:gap-8 text-sm">
+          <div className="flex-shrink-0">
+            <ul className="flex items-center gap-2 sm:gap-4 lg:gap-8 text-xs sm:text-sm">
               <li>
                 <Link
                   href="/cart"
-                  className="flex gap-2 items-end relative text-secondary"
+                  className="flex gap-1 sm:gap-2 items-end relative text-secondary"
                 >
-                  <span className="w-4 h-4 lg:w-6 lg:h-6 rounded-full bg-brand text-white text-xs md:text-sm flex items-center justify-center absolute -top-3 md:-top-2 -right-2 md:right-5">
+                  <span className="w-4 h-4 lg:w-6 lg:h-6 rounded-full bg-brand text-white text-[10px] sm:text-xs md:text-sm flex items-center justify-center absolute -top-2 sm:-top-3 md:-top-2 -right-1 sm:-right-2 md:right-5">
                    {cartData.totalProducts}
                   </span>
-                  <FaShoppingCart className="text-2xl lg:text-3xl text-primary" />{" "}
-                  <span className="hidden md:block">Cart</span>
+                  <FaShoppingCart className="text-xl sm:text-2xl lg:text-3xl text-primary" />{" "}
+                  <span className="hidden sm:block">Cart</span>
                 </Link>
               </li>
               <li>
                 {
                   userData
                   ?
-                  <div className="flex items-center gap-2">
-                   <div className="userImage overflow-hidden w-[30px] h-[30px]  rounded-full bg-gray-200">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                   <div className="userImage overflow-hidden w-[24px] h-[24px] sm:w-[30px] sm:h-[30px] rounded-full bg-gray-200">
                      {/* <Image width={24} height={50} src={userData?.avatar?.url} alt="user profile" /> */}
-                     <h2 className="flex items-center justify-center text-xl font-bold text-blue-400">{userData?.name[0]}</h2>
+                     <h2 className="flex items-center justify-center text-base sm:text-xl font-bold text-blue-400">{userData?.name[0]}</h2>
                     </div>
-                    <h2 className="text-[16px] font-medium text-black">{userData?.name}</h2>
+                    <h2 className="text-xs sm:text-sm md:text-[16px] font-medium text-black hidden sm:block">{userData?.name}</h2>
                   </div>
                   :
-                 <Link href="/login">
+                 <Link href="/login" className="text-xs sm:text-sm">
                    login
                  </Link>
                 }
@@ -240,9 +240,9 @@ const Navbar = ({userData}) => {
         </div>
       </div>
       {/* desktop menu*/}
-      <nav className="hidden md:block py-6 border-t border-[#ececec]">
-        <div className="container flex items-center gap-4 xl:gap-9">
-          <div className="relative">
+      <nav className="hidden md:block py-4 md:py-6 border-t border-[#ececec]">
+        <div className="container px-4 sm:px-6 flex flex-col lg:flex-row items-start lg:items-center gap-4 xl:gap-9">
+          <div className="relative w-full lg:w-auto">
             <h3
               onClick={() => setShow(!show)}
               className="p-2 xl:py-3 xl:px-6 bg-brand rounded-md text-white text-xs xl:text-base font-bold flex items-center gap-1 xl:gap-2 cursor-pointer"
@@ -251,7 +251,7 @@ const Navbar = ({userData}) => {
               Categories <FaChevronDown />
             </h3>
             {show && (
-              <div className="bg-white w-md rounded-lg absolute top-10 xl:top-20 left-0 p-7 border-2 border-brand grid grid-cols-2 gap-6 z-50">
+              <div className="bg-white w-full lg:w-md rounded-lg absolute top-10 xl:top-20 left-0 p-4 md:p-7 border-2 border-brand grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 z-50 max-h-[80vh] overflow-y-auto">
                 <div className="flex items-center gap-2 cursor-pointer shadow py-2 px-3">
                   <Image width={24} height={50} src="/category-1.svg" alt="category1" className="w-6" />
                   <p className="font-bold text-sm text-primary">
@@ -291,7 +291,7 @@ const Navbar = ({userData}) => {
               </div>
             )}
           </div>
-          <ul className="flex gap-3 xl:gap-6 font-bold text-primary text-base xl:text-lg">
+          <ul className="flex flex-wrap gap-2 md:gap-3 xl:gap-6 font-bold text-primary text-sm md:text-base xl:text-lg">
             <li>
               <Link href="/" className="hover:text-brand transition">
                 Home
@@ -327,13 +327,13 @@ const Navbar = ({userData}) => {
             href="tel: 1900 - 888"
             className="ml-auto flex items-center gap-2"
           >
-            <IoCall className="text-2xl xl:text-4xl" />
+            <IoCall className="text-xl md:text-2xl xl:text-4xl" />
             <div>
-              <p className="text-brand font-bold text-base xl:text-2xl">
+              <p className="text-brand font-bold text-sm md:text-base xl:text-2xl">
                 {" "}
                 1900 - 888
               </p>
-              <p className="text-secondary font-medium text-xs xl:text-sm">
+              <p className="text-secondary font-medium text-[10px] md:text-xs xl:text-sm">
                 24/7 Support Center
               </p>
             </div>

@@ -63,14 +63,14 @@ const Category = () => {
   };
 
   return (
-    <section className="pt-14 pb-11">
-      <div className="container">
+    <section className="pt-10 sm:pt-12 md:pt-14 pb-8 sm:pb-10 md:pb-11">
+      <div className="container px-4 sm:px-6">
         <div className="flex flex-col md:flex-row gap-7 items-center md:items-end">
           <h2 className="sectn_heading">Featured Categories</h2>
           <ul className="flex flex-wrap text-base font-light text-primary gap-2 md:gap-7">
             <li>
-              <Link href="/" className="hover:text-brand">
-                {data.slug ? data.slug : "All Categories"}
+              <Link href="/shop" className="hover:text-brand">
+                All Categories
               </Link>
             </li>
           </ul>

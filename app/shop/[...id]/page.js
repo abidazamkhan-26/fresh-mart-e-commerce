@@ -26,9 +26,9 @@ export default async function page({ params }) {
   const relatedProducts = await relateData();
 
   return (
-    <div className="container">
+    <div className="container px-4 sm:px-6">
       <MapBreadcramp title={data.title} />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 p-4 sm:p-6 max-w-6xl mx-auto">
         {/* Left - Product Image */}
         <div className="flex flex-col items-center">
           <Image
@@ -36,10 +36,10 @@ export default async function page({ params }) {
             height={150}
             src={data?.thumbnail}
             alt="Organic Spirulina"
-            className="rounded-2xl shadow-lg w-110 h-auto"
+            className="rounded-2xl shadow-lg w-full max-w-md md:w-110 h-auto"
           />
 
-          <div className="flex gap-3 mt-4">
+          <div className="flex gap-2 sm:gap-3 mt-4 overflow-x-auto pb-2 md:overflow-x-visible md:pb-0">
             {(data?.images ?? []).map((thumb, i) => (
               <Image
                 width={100}
@@ -47,7 +47,7 @@ export default async function page({ params }) {
                 key={i}
                 src={thumb}
                 alt="thumbnail"
-                className="w-30 h-30 border rounded-xl cursor-pointer hover:border-green-500"
+                className="w-20 h-20 sm:w-24 sm:h-24 md:w-30 md:h-30 border rounded-xl cursor-pointer hover:border-green-500 flex-shrink-0"
               />
             ))}
           </div>
@@ -66,7 +66,7 @@ export default async function page({ params }) {
             </h4>
 
             {/* Product Title */}
-            <h1 className="text-2xl font-bold">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
               {data?.title || "Organic Spirulina"}
             </h1>
           </div>
@@ -89,14 +89,14 @@ export default async function page({ params }) {
           </div>
 
           {/* Price */}
-          <div className="flex items-center gap-4">
-            <span className="text-3xl font-bold text-green-600">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+            <span className="text-2xl sm:text-3xl font-bold text-green-600">
               ${data?.price}
             </span>
-            <span className="line-through text-gray-400 ">
-              {(data?.price + data?.discountPercentage).toFixed(2)}
+            <span className="line-through text-gray-400 text-sm sm:text-base">
+              ${(data?.price + data?.discountPercentage).toFixed(2)}
             </span>
-            <span className="text-sm text-red-500">
+            <span className="text-xs sm:text-sm text-red-500">
               {data?.discountPercentage}% Off
             </span>
           </div>
@@ -125,32 +125,32 @@ export default async function page({ params }) {
           <Counter />
 
           {/* Meta Info */}
-          <div className="p-4 mt-6 text-sm text-gray-600">
-            <div className="flex gap-4 mb-4">
-              <p className="w-60  font-medium">
+          <div className="p-3 sm:p-4 mt-4 sm:mt-6 text-xs sm:text-sm text-gray-600">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-3 sm:mb-4">
+              <p className="w-full sm:w-60 font-medium">
                 Delivery: {data?.shippingInformation}
               </p>
-              <p className="w-60 font-medium">SKU: {data?.sku}</p>
+              <p className="w-full sm:w-60 font-medium">SKU: {data?.sku}</p>
             </div>
-            <div className="flex gap-4 mb-4">
-              <p className="w-60 font-medium">Tags: {data?.tags?.join(", ")}</p>
-              <p className="w-60 font-medium">Stock: {data?.stock}</p>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-3 sm:mb-4">
+              <p className="w-full sm:w-60 font-medium">Tags: {data?.tags?.join(", ")}</p>
+              <p className="w-full sm:w-60 font-medium">Stock: {data?.stock}</p>
             </div>
-            <div className="flex gap-4 mb-4">
-              <p className="w-60 font-medium">Return: {data?.returnPolicy}</p>
-              <p className="w-60 font-medium">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-3 sm:mb-4">
+              <p className="w-full sm:w-60 font-medium">Return: {data?.returnPolicy}</p>
+              <p className="w-full sm:w-60 font-medium">
                 Warranty: {data?.warrantyInformation}
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div className="w-full p-6 border-1 border-gray-400 rounded-lg shadow-md">
+      <div className="w-full p-4 sm:p-6 border-1 border-gray-400 rounded-lg shadow-md mt-6 sm:mt-8">
         <ProductDetails data={data} />
       </div>
-      <div className="my-10">
-        <h2 className="text-2xl font-bold text-start mb-6">Related Products</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 md:pt-5 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+      <div className="my-6 sm:my-8 md:my-10 px-4 sm:px-0">
+        <h2 className="text-xl sm:text-2xl font-bold text-start mb-4 sm:mb-6">Related Products</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 md:pt-5 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
           {relatedProducts.products.map((item) => (
             <RelatedProducts key={item.id} data={item} />
           ))}
