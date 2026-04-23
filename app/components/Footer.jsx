@@ -1,12 +1,12 @@
-import Link from 'next/link'
-import React from 'react'
-import { CiLocationOn } from 'react-icons/ci'
-import { FaFacebookF } from 'react-icons/fa'
+import Link from "next/link";
+import React from "react";
+import { CiLocationOn } from "react-icons/ci";
+import { FaFacebookF } from "react-icons/fa";
 import { TbPhoneCall } from "react-icons/tb";
 
 const Footer = () => {
   return (
-    <footer className='px-4 sm:px-6'>
+    <footer className="px-4 sm:px-6">
       <div className="container">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8 sm:gap-12 md:gap-16 lg:gap-20">
           <div>
@@ -42,131 +42,210 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="font-bold text-lg sm:text-xl md:text-2xl text-primary">Company</h3>
+            <h3 className="font-bold text-lg sm:text-xl md:text-2xl text-primary">
+              Company
+            </h3>
             <ul className="font-normal text-sm sm:text-base text-primary flex flex-col gap-2.5 sm:gap-3.5 mt-4 sm:mt-5">
               <li>
-                <Link href="/" className='hover:text-green-400'>About Us</Link>
+                <Link href="/" className="hover:text-green-400">
+                  About Us
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Delivery Information</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Delivery Information
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Privacy Policy</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Privacy Policy
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Terms & Conditions</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Terms & Conditions
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Contact Us</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Contact Us
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Careers</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Careers
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Support Center</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Support Center
+                </Link>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="font-bold text-lg sm:text-xl md:text-2xl text-primary">Account</h3>
+            <h3 className="font-bold text-lg sm:text-xl md:text-2xl text-primary">
+              Account
+            </h3>
             <ul className="font-normal text-sm sm:text-base text-primary flex flex-col gap-2.5 sm:gap-3.5 mt-4 sm:mt-5">
               <li>
-                <Link href="/" className='hover:text-green-400'>Sign In</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Sign In
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>View Cart</Link>
+                <Link href="/" className="hover:text-green-400">
+                  View Cart
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>My Wishlist</Link>
+                <Link href="/" className="hover:text-green-400">
+                  My Wishlist
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Track My Order</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Track My Order
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Help Ticket</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Help Ticket
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Shipping Details</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Shipping Details
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Compare products</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Compare products
+                </Link>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="font-bold text-lg sm:text-xl md:text-2xl text-primary">Corporate</h3>
+            <h3 className="font-bold text-lg sm:text-xl md:text-2xl text-primary">
+              Corporate
+            </h3>
             <ul className="font-normal text-sm sm:text-base text-primary flex flex-col gap-2.5 sm:gap-3.5 mt-4 sm:mt-5">
               <li>
-                <Link href="/" className='hover:text-green-400'>Become a Vendor</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Become a Vendor
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Affiliate Program</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Affiliate Program
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Farm Business</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Farm Business
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Farm Careers</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Farm Careers
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Our Suppliers</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Our Suppliers
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Accessibility</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Accessibility
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Promotions</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Promotions
+                </Link>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="font-bold text-lg sm:text-xl md:text-2xl text-primary">Popular</h3>
+            <h3 className="font-bold text-lg sm:text-xl md:text-2xl text-primary">
+              Popular
+            </h3>
             <ul className="font-normal text-sm sm:text-base text-primary flex flex-col gap-2.5 sm:gap-3.5 mt-4 sm:mt-5">
               <li>
-                <Link href="/" className='hover:text-green-400'>Milk & Flavoured Milk</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Milk & Flavoured Milk
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Butter and Margarine</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Butter and Margarine
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Eggs Substitutes</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Eggs Substitutes
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Marmalades</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Marmalades
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Sour Cream and Dips</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Sour Cream and Dips
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Tea & Kombucha</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Tea & Kombucha
+                </Link>
               </li>
               <li>
-                <Link href="/" className='hover:text-green-400'>Cheese</Link>
+                <Link href="/" className="hover:text-green-400">
+                  Cheese
+                </Link>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="font-bold text-lg sm:text-xl md:text-2xl text-primary">Install App</h3>
+            <h3 className="font-bold text-lg sm:text-xl md:text-2xl text-primary">
+              Install App
+            </h3>
             <p className="font-normal text-sm sm:text-base text-primary my-4 sm:my-5">
               From App Store or Google Play
             </p>
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
               <Link href="/" className="w-full sm:w-auto">
-                <img src="/app-store.png" alt="app-store" className="w-full sm:w-auto max-w-[140px]" />
+                <img
+                  src="/app-store.png"
+                  alt="app-store"
+                  className="w-full sm:w-auto max-w-[140px]"
+                />
               </Link>
               <Link href="/" className="w-full sm:w-auto">
-                <img src="/app-store.png" alt="app-store" className="w-full sm:w-auto max-w-[140px]" />
+                <img
+                  src="/app-store.png"
+                  alt="app-store"
+                  className="w-full sm:w-auto max-w-[140px]"
+                />
               </Link>
             </div>
             <p className="font-normal text-sm sm:text-base text-primary my-4 sm:my-5">
               Secured Payment Gateways
             </p>
-            <img src="/payment-method.png" alt="payment-method" className="w-full max-w-[200px]" />
+            <img
+              src="/payment-method.png"
+              alt="payment-method"
+              className="w-full max-w-[200px]"
+            />
           </div>
         </div>
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 justify-between items-start lg:items-center py-6 lg:py-9 border-t border-brand mt-8 lg:mt-11">
           <p className="text-sm sm:text-base max-w-full lg:max-w-72">
-            © 2024, FreshMart - E-Commerce Platform by abid azam khan. All rights reserved
+            © 2024, FreshMartin - E-Commerce Platform by abid azam khan. All
+            rights reserved
           </p>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 w-full lg:w-auto">
             <Link href="tel: 1900 - 666" className="flex items-center gap-2">
@@ -222,12 +301,14 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <p className="text-xs sm:text-sm mt-2">Up to 15% discount on your first subscribe</p>
+            <p className="text-xs sm:text-sm mt-2">
+              Up to 15% discount on your first subscribe
+            </p>
           </div>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

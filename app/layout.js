@@ -4,16 +4,17 @@ import Navbar from "./components/Navbar";
 import "./globals.css";
 
 export const metadata = {
-  title: "FreshMart - E-Commerce Platform",
-  description: "FreshMart - Your trusted e-commerce grocery solution by abid azam khan",
+  title: "FreshMartin - E-Commerce Platform",
+  description:
+    "FreshMartin - Your trusted e-commerce grocery solution by abid azam khan",
 };
 
 export default async function RootLayout({ children }) {
   const data = await cookies();
   const cookie = data.get("token")?.value;
-  
+
   let userData = null;
-  
+
   // Only fetch user data if token exists
   if (cookie) {
     try {
@@ -26,9 +27,9 @@ export default async function RootLayout({ children }) {
           },
           // Add timeout and error handling
           next: { revalidate: 0 },
-        }
+        },
       );
-      
+
       if (response.ok) {
         const res = await response.json();
         // Validate response structure
@@ -39,7 +40,7 @@ export default async function RootLayout({ children }) {
       // Silently fail if token is invalid - don't expose error to client
     } catch (error) {
       // Log error server-side only, don't expose to client
-      if (process.env.NODE_ENV === 'development') {
+      if (process.env.NODE_ENV === "development") {
         console.error("Profile fetch error:", error);
       }
     }
