@@ -1,24 +1,38 @@
+"use client";
 import { Box, Rating } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { CiShoppingCart } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
 const ProductItems = ({ data }) => {
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
 
   return (
     <div className="block p-2 md:p-6 border border-[#F2F3F4] rounded-2xl w-full group relative overflow-hidden">
       <div className="absolute top-0 left-0 bg-brand text-white text-xs px-2 py-1 rounded-br-xl">
         <p>{data?.availabilityStatus}</p>
       </div>
-      <Image
-        width={50}
-        height={50}
-        layout="responsive"
-        src={data?.thumbnail}
-        alt="product"
-        className="w-full h-full"
-      />
+      {imageError || !data?.thumbnail ? (
+        <div className="w-full h-48 bg-gray-200 flex items-center justify-center rounded-lg">
+          <span className="text-gray-500 text-sm">No Image</span>
+        </div>
+      ) : (
+        <Image
+          width={50}
+          height={50}
+          layout="responsive"
+          src={data?.thumbnail}
+          alt="product"
+          className="w-full h-full"
+          onError={handleImageError}
+          unoptimized
+        />
+      )}
       <h4 className="text-xs font-normal text-secondary">{data?.category}</h4>
       <Link
         href={`/shop/${data?.id}`}

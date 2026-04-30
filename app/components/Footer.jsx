@@ -224,13 +224,6 @@ const Footer = () => {
                   className="w-full sm:w-auto max-w-[140px]"
                 />
               </Link>
-              <Link href="/" className="w-full sm:w-auto">
-                <img
-                  src="/app-store.png"
-                  alt="app-store"
-                  className="w-full sm:w-auto max-w-[140px]"
-                />
-              </Link>
             </div>
             <p className="font-normal text-sm sm:text-base text-primary my-4 sm:my-5">
               Secured Payment Gateways

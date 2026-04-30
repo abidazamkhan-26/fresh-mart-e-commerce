@@ -1,13 +1,10 @@
-import React from 'react'
-import ProductListItem from '../utils/ProductListItem'
+import React from "react";
+import ProductListItem from "../utils/ProductListItem";
 
 const TrendyProducts = async () => {
-  const response = await fetch(
-    "https://fdr-food-api.onrender.com/api/foods",
-    {
-      method: "GET",
-    }
-  );
+  const response = await fetch("https://dummyjson.com/products?limit=12", {
+    method: "GET",
+  });
   const data = await response.json();
   return (
     <section className="pb-10 sm:pb-14 px-4 sm:px-6">
@@ -18,11 +15,9 @@ const TrendyProducts = async () => {
               Top Selling
             </h2>
             <div className="flex flex-col gap-5 mt-8">
-              {
-                data.slice(0, 3).map((item) => (
-                  <ProductListItem key={item._id} data={item} />
-                ))
-              }
+              {data.products.slice(0, 3).map((item) => (
+                <ProductListItem key={item.id} data={item} />
+              ))}
             </div>
           </div>
           <div>
@@ -30,11 +25,9 @@ const TrendyProducts = async () => {
               Trending Products
             </h2>
             <div className="flex flex-col gap-5 mt-8">
-              {
-                data.slice(0, 3).map((item) => (
-                  <ProductListItem key={item._id} data={item} />
-                ))
-              }
+              {data.products.slice(0, 3).map((item) => (
+                <ProductListItem key={item.id} data={item} />
+              ))}
             </div>
           </div>
           <div>
@@ -42,11 +35,9 @@ const TrendyProducts = async () => {
               Recently added
             </h2>
             <div className="flex flex-col gap-5 mt-8">
-              {
-                data.slice(0, 3).map((item) => (
-                  <ProductListItem key={item._id} data={item} />
-                ))
-              }
+              {data.products.slice(0, 3).map((item) => (
+                <ProductListItem key={item.id} data={item} />
+              ))}
             </div>
           </div>
           <div>
@@ -54,17 +45,15 @@ const TrendyProducts = async () => {
               Top Rated
             </h2>
             <div className="flex flex-col gap-5 mt-8">
-              {
-                data.slice(0, 3).map((item) => (
-                  <ProductListItem key={item._id} data={item} />
-                ))
-              }
+              {data.products.slice(0, 3).map((item) => (
+                <ProductListItem key={item.id} data={item} />
+              ))}
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default TrendyProducts
+export default TrendyProducts;
