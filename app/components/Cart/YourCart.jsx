@@ -1,6 +1,7 @@
 import React from "react";
 import ShoppingCart from "./ShoppingCart";
-import { RiDeleteBin5Line } from "react-icons/ri";
+import { RiDeleteBin5Line, RiShoppingCartLine } from "react-icons/ri";
+import { FaTruck, FaTag, FaGift } from "react-icons/fa";
 
 const YourCart = async () => {
   const res = await fetch("https://dummyjson.com/carts/5", {
@@ -9,126 +10,171 @@ const YourCart = async () => {
   });
   const data = await res.json();
 
-  // console.log(data);
-
   return (
-    <section className="pt-6 sm:pt-8 pb-8 sm:pb-12 px-4 sm:px-6">
-      <div className="container">
-        <div className="flex flex-col lg:flex-row gap-5 lg:gap-8">
-          <div className="w-full lg:w-2/3">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Your Cart</h2>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 text-base sm:text-lg md:text-xl mt-3 sm:mt-4">
-              <h5>
-                There are{" "}
-                <span className="text-green-400">{data?.totalProducts}</span>{" "}
-                products in your cart
-              </h5>
-              <button className="flex items-center gap-2 text-base sm:text-lg md:text-xl text-gray-600">
-                <RiDeleteBin5Line /> Clear Cart
-              </button>
+    <section className="pt-8 sm:pt-12 pb-8 sm:pb-16 px-4 sm:px-6 bg-gradient-to-br from-gray-50 to-white min-h-screen">
+      <div className="container max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+              <RiShoppingCartLine className="text-white text-xl" />
             </div>
-            <div className="mt-5">
-              <div className="bg-white shadow rounded-lg pb-5">
-                <ul className="hidden sm:flex items-center bg-gray-200 px-2 sm:px-4">
-                  <li className="min-w-5 px-2 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium whitespace-nowrap">
-                    <input type="checkbox" />
-                  </li>
-                  <li className="min-w-120 px-2 sm:px-3 py-2 text-left text-xs sm:text-sm font-medium whitespace-nowrap">
-                    Product
-                  </li>
-                  <li className="min-w-30 sm px-2 sm:px-3 py-2 text-center text-xs sm:text-sm font-medium whitespace-nowrap">
-                    Unit Price
-                  </li>
-                  <li className="min-w-30 px-2 sm:px-3 py-2 text-center text-xs sm:text-sm font-medium whitespace-nowrap">
-                    Quantity
-                  </li>
-                  <li className="min-w-30 px-2 sm:px-3 py-2 text-center text-xs sm:text-sm font-medium whitespace-nowrap">
-                    Subtotal
-                  </li>
-                  <li className="min-w-30 px-2 sm:px-3 py-2 text-center text-xs sm:text-sm font-medium whitespace-nowrap">
-                    Remove
-                  </li>
-                </ul>
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-800">
+              Shopping Cart
+            </h1>
+          </div>
+          <p className="text-gray-600 ml-15">
+            Review your items and proceed to checkout
+          </p>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Cart Items Section */}
+          <div className="w-full lg:w-2/3">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div className="flex items-center justify-between p-6 border-b border-gray-100">
+                <div className="flex items-center gap-3">
+                  <h5 className="text-lg font-semibold text-gray-800">
+                    <span className="text-green-500">
+                      {data?.totalProducts}
+                    </span>{" "}
+                    Items
+                  </h5>
+                </div>
+                <button className="flex items-center gap-2 px-4 py-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors duration-200">
+                  <RiDeleteBin5Line className="text-lg" />
+                  <span className="font-medium">Clear Cart</span>
+                </button>
+              </div>
+              {/* Table Header */}
+              <div className="hidden sm:grid grid-cols-12 gap-4 px-6 py-4 bg-gray-50 text-sm font-semibold text-gray-600">
+                <div className="col-span-1">
+                  <input
+                    type="checkbox"
+                    className="w-4 h-4 text-green-500 rounded"
+                  />
+                </div>
+                <div className="col-span-5">Product</div>
+                <div className="col-span-2 text-center">Price</div>
+                <div className="col-span-2 text-center">Quantity</div>
+                <div className="col-span-2 text-center">Total</div>
+                <div className="col-span-1 text-center">Remove</div>
+              </div>
+              {/* Cart Items */}
+              <div className="divide-y divide-gray-100">
                 {data.products?.map((item) => (
                   <ShoppingCart key={item.id} data={item} />
                 ))}
-                <div className="flex flex-col sm:flex-row items-start sm:items-end justify-end gap-3 sm:gap-10 md:gap-20 sm:mr-0 md:mr-60 px-4 sm:px-0">
-                  <label className="text-sm sm:text-base text-start sm:text-end font-semibold text-gray-700">
-                    Total Products:{" "}
-                    <span className="text-green-500">
+              </div>
+
+              {/* Summary Bar */}
+              <div className="flex flex-col sm:flex-row items-center justify-between p-6 bg-gray-50 border-t border-gray-100">
+                <div className="flex items-center gap-6">
+                  <div className="text-center">
+                    <p className="text-sm text-gray-500">Total Products</p>
+                    <p className="text-xl font-bold text-green-600">
                       {data?.totalProducts}
-                    </span>
-                  </label>
-                  <label className="text-sm sm:text-base text-start sm:text-end font-semibold text-gray-700">
-                    Total Quantity:{" "}
-                    <span className="text-green-500">
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-sm text-gray-500">Total Quantity</p>
+                    <p className="text-xl font-bold text-green-600">
                       {data?.totalQuantity}
-                    </span>
-                  </label>
+                    </p>
+                  </div>
                 </div>
+                <button className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-200 font-medium">
+                  Continue Shopping
+                </button>
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-1/3 mt-6 lg:mt-25">
-            <form>
-              <div className="grid gap-2  shadow-lg rounded-2xl py-5">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 lg:gap-2 mx-5 px-5 py-4 border rounded-xl border-gray-400 transform-fill">
-                  <label className="min-w-[120px] text-base sm:text-end font-semibold text-gray-700">
-                    Total
-                  </label>
-                  <p className="w-full text-end">
-                    $ {(data?.total + data?.discountedTotal).toFixed(2)}
-                  </p>
+          {/* Checkout Summary */}
+          <div className="w-full lg:w-1/3">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden sticky top-4">
+              <div className="bg-gradient-to-r from-green-500 to-green-600 p-6 text-white">
+                <h3 className="text-xl font-bold mb-2">Order Summary</h3>
+                <p className="text-green-100 text-sm">Complete your purchase</p>
+              </div>
+
+              <div className="p-6 space-y-4">
+                {/* Price Breakdown */}
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                      <FaTag className="text-gray-400" />
+                      <span className="text-gray-600">Subtotal</span>
+                    </div>
+                    <span className="font-semibold text-gray-800">
+                      ${(data?.total + data?.discountedTotal).toFixed(2)}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                      <FaGift className="text-gray-400" />
+                      <span className="text-gray-600">Discount</span>
+                    </div>
+                    <span className="font-semibold text-green-600">
+                      -${data?.discountedTotal.toFixed(2)}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                      <FaTruck className="text-gray-400" />
+                      <span className="text-gray-600">Shipping</span>
+                    </div>
+                    <span className="font-semibold text-green-600">FREE</span>
+                  </div>
                 </div>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 lg:gap-2 mx-5 px-5 py-4 border rounded-xl border-gray-400 transform-fill">
-                  <label className="min-w-[120px] text-base sm:text-end font-semibold text-gray-700">
-                    Total Discount
+
+                {/* Coupon Section */}
+                <div className="border-t border-gray-100 pt-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Apply Coupon Code
                   </label>
-                  <p className="w-full text-end">
-                    $ {data?.discountedTotal.toFixed(2)}
-                  </p>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      placeholder="Enter coupon code"
+                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors"
+                    />
+                    <button className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-200 font-medium">
+                      Apply
+                    </button>
+                  </div>
                 </div>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 lg:gap-2 mx-5 px-5 py-4 border rounded-xl border-gray-400 transform-fill">
-                  <label className="min-w-[120px] text-base sm:text-end font-semibold text-gray-700">
-                    Shipping
+
+                {/* Shipping Method */}
+                <div className="border-t border-gray-100 pt-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Shipping Method
                   </label>
-                  <p className="w-full text-end">Free</p>
-                </div>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 lg:gap-2 mx-5 px-5 py-4 border rounded-xl border-gray-400 transform-fill">
-                  <label className="min-w-[120px] text-base sm:text-end font-semibold text-gray-700">
-                    Apply Coupon
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full border border-gray-300 rounded-lg py-2 pl-2"
-                  />
-                  <button className="bg-green-500 px-8 py-2 rounded-lg">
-                    Apply
-                  </button>
-                </div>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 lg:gap-2 mx-5 px-5 py-4 border rounded-xl border-gray-400 transform-fill">
-                  <label className="min-w-[120px] text-base sm:text-end font-semibold text-gray-700">
-                    Payable Amount
-                  </label>
-                  <p className="w-full text-end">$ {data?.total.toFixed(2)}</p>
-                </div>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 lg:gap-2 mx-5 px-5 py-4 border rounded-xl border-gray-400 transform-fill">
-                  <label className="min-w-[120px] text-base sm:text-end font-semibold text-gray-700">
-                    Shipping Type
-                  </label>
-                  <select className="w-full text-end form-control">
-                    <option value="Cash on Delivary">Cash on Delivary</option>
+                  <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-colors">
+                    <option value="cash-on-delivery">Cash on Delivery</option>
+                    <option value="credit-card">Credit Card</option>
+                    <option value="paypal">PayPal</option>
                   </select>
                 </div>
-                <div className="px-4 sm:px-6 md:px-10 rounded-2xl">
-                  <button
-                    className="w-full bg-green-500 py-2 sm:py-3 text-base sm:text-lg md:text-xl lg:text-2xl text-white hover:text-green-300 hover:bg-blue-500 transition duration-300 ease-in-out rounded-lg"
-                  >
-                    Proceed To CheckOut
+
+                {/* Total */}
+                <div className="border-t border-gray-100 pt-4">
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="text-lg font-semibold text-gray-700">
+                      Total Amount
+                    </span>
+                    <span className="text-2xl font-bold text-green-600">
+                      ${data?.total.toFixed(2)}
+                    </span>
+                  </div>
+
+                  <button className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-200 font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    Proceed to Checkout
                   </button>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
