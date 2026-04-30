@@ -25,7 +25,7 @@ const TrendyProducts = async () => {
               Trending Products
             </h2>
             <div className="flex flex-col gap-5 mt-8">
-              {data.products.slice(0, 3).map((item) => (
+              {data.products.slice(3, 6).map((item) => (
                 <ProductListItem key={item.id} data={item} />
               ))}
             </div>
@@ -35,7 +35,7 @@ const TrendyProducts = async () => {
               Recently added
             </h2>
             <div className="flex flex-col gap-5 mt-8">
-              {data.products.slice(0, 3).map((item) => (
+              {data.products.slice(6, 9).map((item) => (
                 <ProductListItem key={item.id} data={item} />
               ))}
             </div>
@@ -45,7 +45,7 @@ const TrendyProducts = async () => {
               Top Rated
             </h2>
             <div className="flex flex-col gap-5 mt-8">
-              {data.products.slice(0, 3).map((item) => (
+              {data.products.slice(9, 12).map((item) => (
                 <ProductListItem key={item.id} data={item} />
               ))}
             </div>
