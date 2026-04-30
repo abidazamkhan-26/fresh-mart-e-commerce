@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import Link from "next/link";
@@ -6,8 +6,8 @@ import CategoryItems from "./CategoryItems";
 import { NextArrow, PrevArrow } from "../utils/SliderArrows";
 import { useEffect, useState } from "react";
 const Category = () => {
-  const [data, setData] = useState([]); 
-    useEffect(() => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
     const fetchData = async () => {
       const res = await fetch("https://dummyjson.com/products/categories");
       const json = await res.json();
@@ -15,47 +15,43 @@ const Category = () => {
     };
     fetchData();
   }, []);
-  
 
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 10,
-    slidesToScroll: 1,
+    slidesToShow: 6,
+    slidesToScroll: 2,
     autoplay: true,
     autoplaySpeed: 1000,
     nextArrow: <NextArrow customStyle="absolute -top-10 md:-top-16 right-0" />,
     prevArrow: <PrevArrow customStyle="absolute -top-10 md:-top-16 right-16" />,
     responsive: [
       {
-        breakpoint: 1025,
+        breakpoint: 1024,
         settings: {
-          slidesToShow: 6,
+          slidesToShow: 5,
           slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 896,
-        settings: {
-          slidesToShow: 6,
-          slidesToScroll: 2,
-          initialSlide: 2,
         },
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 4,
           slidesToScroll: 2,
-          initialSlide: 2,
         },
       },
       {
-        breakpoint: 512,
+        breakpoint: 640,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -78,7 +74,7 @@ const Category = () => {
         <div className="pt-11">
           <Slider {...settings}>
             {data.map((item, index) => (
-                <CategoryItems key={index} data={item}/>
+              <CategoryItems key={index} data={item} />
             ))}
           </Slider>
         </div>
