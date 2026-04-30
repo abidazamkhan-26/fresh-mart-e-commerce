@@ -11,8 +11,8 @@ const YourCart = async () => {
   const data = await res.json();
 
   return (
-    <section className="pt-8 sm:pt-12 pb-8 sm:pb-16 px-4 sm:px-6 bg-gradient-to-br from-gray-50 to-white min-h-screen">
-      <div className="container max-w-7xl mx-auto">
+    <section className="pt-8 sm:pt-12 pb-8 sm:pb-16 bg-gradient-to-br from-gray-50 to-white min-h-screen">
+      <div className="container w-full mx-auto">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-2">
@@ -31,8 +31,8 @@ const YourCart = async () => {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Cart Items Section */}
           <div className="w-full lg:w-2/3">
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-              <div className="flex items-center justify-between p-6 border-b border-gray-100">
+            <div className="bg-white overflow-hidden">
+              <div className="flex items-center justify-between p-6">
                 <div className="flex items-center gap-3">
                   <h5 className="text-lg font-semibold text-gray-800">
                     <span className="text-green-500">
@@ -47,7 +47,7 @@ const YourCart = async () => {
                 </button>
               </div>
               {/* Table Header */}
-              <div className="hidden sm:grid grid-cols-12 gap-4 px-6 py-4 bg-gray-50 text-sm font-semibold text-gray-600">
+              <div className="hidden sm:grid grid-cols-12 gap-4 px-6 py-4 bg-white text-sm font-semibold text-gray-600">
                 <div className="col-span-1">
                   <input
                     type="checkbox"
@@ -68,7 +68,7 @@ const YourCart = async () => {
               </div>
 
               {/* Summary Bar */}
-              <div className="flex flex-col sm:flex-row items-center justify-between p-6 bg-gray-50 border-t border-gray-100">
+              <div className="flex flex-col sm:flex-row items-center justify-between p-6 bg-white border-t border-gray-100">
                 <div className="flex items-center gap-6">
                   <div className="text-center">
                     <p className="text-sm text-gray-500">Total Products</p>
@@ -91,7 +91,7 @@ const YourCart = async () => {
           </div>
           {/* Checkout Summary */}
           <div className="w-full lg:w-1/3">
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden sticky top-4">
+            <div className="bg-white overflow-hidden sticky top-4">
               <div className="bg-gradient-to-r from-green-500 to-green-600 p-6 text-white">
                 <h3 className="text-xl font-bold mb-2">Order Summary</h3>
                 <p className="text-green-100 text-sm">Complete your purchase</p>
